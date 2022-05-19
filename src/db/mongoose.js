@@ -1,8 +1,13 @@
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true
-})
+const connectDB = (url) => {
+    return mongoose.connect(url, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true,
+    })
+}
+
+module.exports = connectDB
+/* mongodb+srv://kanban-api-working:kanban-api-working@kanban.gpvpz.mongodb.net/kanban?retryWrites=true&w=majority */
