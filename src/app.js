@@ -1,18 +1,23 @@
+const connectDB = require('./db/mongoose');
 const express = require('express');
 const app = express();
+require('dotenv').config();
 
-const connectDB = require('./db/mongoose');
+//error handlers
+const notFound = require('./middleware/not-found');
+const errorHandlder = require('./middleware/error-handler');
+
 const user = require('./routers/user');
 
-require('dotenv').config();
-const notFound = require('./middleware/not-found');
 // middleware
 app.use(express.json());
 
 // routes
-app.use('/user', user)
+app.use('/user', user);
 
-app.use(notFound)
+app.use(notFound);
+app.use(errorHandlder);
+
 
 const port = process.env.PORT || 5000;
 
@@ -28,18 +33,3 @@ const startServer = async () => {
 };
 
 startServer();
-
-/* const tasks = require('./routes/tasks');
-
-
-const notFound = require('./middleware/not-found');
-const errorHandlerMiddleware = require('./middleware/error-handler'); 
-
-
-app.use('/api/v1/tasks', tasks);
-
-
-
-app.use(notFound);
-app.use(errorHandlerMiddleware);
-*/
