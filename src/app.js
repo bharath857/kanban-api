@@ -3,20 +3,26 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
-//error handlers
+//error handlers imports
 const notFound = require('./middleware/not-found');
 const errorHandlder = require('./middleware/error-handler');
 
-const user = require('./routers/user');
+//route handlers imports
+const login = require('./routers/login');
 
 // middleware
 app.use(express.json());
 
-// routes
-app.use('/user', user);
 
+// routes
+app.use('/', login);
+
+
+/* 
+
+//middleware error handlers
 app.use(notFound);
-app.use(errorHandlder);
+app.use(errorHandlder); */
 
 
 const port = process.env.PORT || 5000;
