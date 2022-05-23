@@ -8,7 +8,7 @@ const notFound = require('./middleware/not-found');
 const errorHandlder = require('./middleware/error-handler');
 
 //route handlers imports
-const login = require('./routers/login');
+const login = require('./routers/login/login');
 
 // middleware
 app.use(express.json());
@@ -18,11 +18,11 @@ app.use(express.json());
 app.use('/', login);
 
 
-/* 
+
 
 //middleware error handlers
 app.use(notFound);
-app.use(errorHandlder); */
+app.use(errorHandlder);
 
 
 const port = process.env.PORT || 5000;
