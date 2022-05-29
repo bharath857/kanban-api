@@ -1,7 +1,10 @@
 const connectDB = require('./db/mongoose');
 const express = require('express');
 const app = express();
+
+
 require('dotenv').config();
+require('express-async-errors');
 
 //error handlers imports
 const notFound = require('./middleware/not-found');
